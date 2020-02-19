@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 plugins=(
-	git z zsh-autosuggestions extract web-search zsh-syntax-highlighting zsh-completions
+	git z zsh-autosuggestions extract web-search zsh-syntax-highlighting zsh-completions tmux
 )
 
 #source ~/.oh-my-zsh/plugins/incr/incr*.zsh
