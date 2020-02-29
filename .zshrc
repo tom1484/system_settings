@@ -113,11 +113,12 @@ plugins=(
 
 #source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 
-export GOBASE=$HOME/go
-alias setgo='setgo() { export GOPATH=${GOBASE%%/}/$1; }; setgo'
+# export GOBASE=$HOME/go
+# alias setgo='setgo() { export GOPATH=${GOBASE%%/}/$1; export GOBIN=$GOPATH/bin }; setgo'
 
 export GOROOT=/usr/local/go
-export GOBIN=$GOROOT/bin
+# export GOBIN=$GOROOT/bin
+export GOBIN=
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH:$GOBIN
 
