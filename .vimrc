@@ -36,8 +36,6 @@ let $LANG = 'en_US.UTF-8'
 :autocmd InsertEnter * set cul
 :autocmd InsertLeave * set nocul
 
-colorscheme gruvbox
-"set guifont=Monospace:h20
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
@@ -45,11 +43,16 @@ set cursorline
 highlight cursorline ctermfg=NONE ctermbg=237 cterm=bold guifg=NONE guibg=NONE gui=bold
 
 set hlsearch
+:noh
 set relativenumber
 
-set bg=dark
 hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
 hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+
+set background=dark
+colorscheme gruvbox
+" colorscheme solarized8
+
 " }}}
 
 " Format {{{
@@ -110,6 +113,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'dkprice/vim-easygrep'
+Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 " COC.nvim {{{
@@ -143,6 +147,15 @@ let g:ctrlp_follow_symlinks=1
 " }}}
 
 " Airline {{{
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_sep = '◀'
+let g:airline_right_alt_sep = '❮'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
 "let g:airline_theme='simple'
 "let g:airline_statusline_ontop=1
 " }}}
