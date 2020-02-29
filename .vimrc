@@ -1,7 +1,7 @@
 " Startup {{{
 set nofoldenable
 set autoread
-autocmd BufWritePost ~/.vimrc source ~/.vimrc
+"autocmd BufWritePost ~/.vimrc source ~/.vimrc
 " }}}
 
 " General {{{
@@ -17,6 +17,7 @@ set backspace=indent,eol,start whichwrap =<,>,[,]
 set clipboard =unnamed
 " 設定 alt 鍵不對映到選單欄
 set winaltkeys=no
+set formatoptions-=cro
 " }}}
 
 " Lang & Encoding {{{
@@ -28,6 +29,13 @@ let $LANG = 'en_US.UTF-8'
 " }}}
 
 " GUI {{{
+"Mode Settings
+"let &t_SI.="\e[5 q" "SI = INSERT mode
+"let &t_SN.="\e[1 q" "SN = NORMAL mode
+"let &t_SR.="\e[2 q" "SR = REPLACE mode
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
+
 colorscheme gruvbox
 "set guifont=Monospace:h20
 source $VIMRUNTIME/delmenu.vim
@@ -55,11 +63,33 @@ syntax on
 " }}}
 
 " Keymap {{{
-imap <C-S> <Esc>:w<CR>
-nmap <C-S> <Esc>:w<CR>
+inoremap <C-S> <Esc>:w<CR>
+nnoremap <C-S> :w<CR>
 
-imap <C-W> <Esc><C-W>
-imap <C-N> <Esc><C-N>
+nnoremap <C-R> :Replace 
+inoremap <C-R> <Esc>:Replace 
+
+nnoremap <C-Z> u
+inoremap <C-Z> <Esc>ua
+nnoremap <C-Y> <C-R>
+inoremap <C-Y> <Esc><C-R>a
+
+inoremap <C-W> <Esc><C-W>
+
+inoremap <C-N> <Esc>:tabn<CR>
+nnoremap <C-N> :tabn<CR>
+inoremap <C-P> <Esc>:tabp<CR>
+nnoremap <C-P> :tabp<CR>
+inoremap <C-C> <Esc>:tabc<CR>
+nnoremap <C-C> :tabc<CR>
+
+nnoremap <C-_> gcc
+inoremap <C-_> <Esc>gcc a
+vnoremap <C-_> gc
+
+nnoremap <F3> :noh<CR>
+
+noremap <C-T> :!
 " }}}
 
 " Plugin {{{
@@ -77,18 +107,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tpope/vim-commentary'
+Plug 'dkprice/vim-easygrep'
 call plug#end()
-
-" auto active
-autocmd vimenter * NERDTree
-"autocmd vimenter * Tagbar
 
 " COC.nvim {{{
 let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-pairs',
 	\ 'coc-tsserver',
-	\ 'coc-eslint', 
+	\ 'coc-eslin', 
 	\ 'coc-prettier', 
 	\ 'coc-json', 
 \ ]
@@ -96,10 +125,9 @@ let g:coc_global_extensions = [
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-let g:coc_snippet_next = '<CR>'
+let g:coc_snippet_next = '<C-N>'
 " }}}
 
 " CtrlP {{{
@@ -124,10 +152,11 @@ let g:go_fmt_command = "goimports"
 " }}}
 
 " NERDTree {{{
+let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeWinPos='left'
-let NERDTreeWinSize=28
+let NERDTreeWinSize=32
 let NERDTreeChDirMode=1
-nmap <C-n> :NERDTreeToggle<CR>
+nmap <F5> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " }}}
 
