@@ -8,16 +8,16 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="bureau"
-#ZSH_THEME="frisk"
-#ZSH_THEME="gnzh"
-#ZSH_THEME="junkfood"
-#ZSH_THEME="kphoen"
-#ZSH_THEME="steeef"
-#ZSH_THEME="tjkirch"
-ZSH_THEME="xiong-chiamiov-plus"
-#ZSH_THEME="ys"
+# ZSH_THEME="robbyrussell"
+
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+# POWERLEVEL9K_MODE='awesome-fontconfig'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context battery virtualenv dir dir_writable vcs newline time vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram date)
+
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -124,3 +124,5 @@ export PATH=$PATH:$GOPATH:$GOBIN
 
 stty stop undef
 stty start undef
+
+set -o vi
