@@ -29,10 +29,6 @@ let $LANG = 'en_US.UTF-8'
 " }}}
 
 " GUI {{{
-"Mode Settings
-"let &t_SI.="\e[5 q" "SI = INSERT mode
-"let &t_SN.="\e[1 q" "SN = NORMAL mode
-"let &t_SR.="\e[2 q" "SR = REPLACE mode
 :autocmd InsertEnter * set cul
 :autocmd InsertLeave * set nocul
 
@@ -66,33 +62,39 @@ syntax on
 " }}}
 
 " Keymap {{{
-inoremap <C-S> <Esc>:w<CR>
-nnoremap <C-S> :w<CR>
+nmap <C-J> <C-F>
+imap <C-J> <Esc><C-F>a
+nmap <C-K> <C-B>
+imap <C-K> <Esc><C-B>a
 
-nnoremap <C-R> :Replace 
-inoremap <C-R> <Esc>:Replace 
+imap <C-S> <Esc>:w<CR>
+nmap <C-S> :w<CR>
 
-nnoremap <C-Z> u
-inoremap <C-Z> <Esc>ua
-nnoremap <C-Y> <C-R>
-inoremap <C-Y> <Esc><C-R>a
+nmap <C-R> :Replace 
+imap <C-R> <Esc>:Replace 
 
-inoremap <C-W> <Esc><C-W>
+nmap <C-Z> u
+imap <C-Z> <Esc>ua
+nmap <C-Y> <C-R>
+imap <C-Y> <Esc><C-R>a
 
-inoremap <C-N> <Esc>:tabn<CR>
-nnoremap <C-N> :tabn<CR>
-inoremap <C-P> <Esc>:tabp<CR>
-nnoremap <C-P> :tabp<CR>
-inoremap <C-C> <Esc>:tabc<CR>
-nnoremap <C-C> :tabc<CR>
+imap <C-W> <Esc><C-W>
 
-nnoremap <C-_> gcc
-inoremap <C-_> <Esc>gcc a
-vnoremap <C-_> gc
+imap <C-N> <Esc>:tabn<CR>
+nmap <C-N> :tabn<CR>
+imap <C-P> <Esc>:tabp<CR>
+nmap <C-P> :tabp<CR>
+imap <C-C> <Esc>:tabc<CR>
+nmap <C-C> :tabc<CR>
 
-nnoremap <F3> :noh<CR>
+nmap <C-_> gcc
+imap <C-_> <Esc>gcc a
+vmap <C-_> gc
 
-noremap <C-T> :!
+nmap <F3> :noh<CR>
+
+nmap <C-T> :!
+imap <C-T> <Esc>:!
 " }}}
 
 " Plugin {{{
@@ -121,7 +123,6 @@ let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-pairs',
 	\ 'coc-tsserver',
-	\ 'coc-eslin', 
 	\ 'coc-prettier', 
 	\ 'coc-json', 
 \ ]
