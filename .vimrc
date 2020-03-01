@@ -73,10 +73,10 @@ nmap <C-S> :w<CR>
 nmap <C-R> :Replace 
 imap <C-R> <Esc>:Replace 
 
-nmap <C-Z> u
-imap <C-Z> <Esc>ua
-nmap <C-Y> <C-R>
-imap <C-Y> <Esc><C-R>a
+nnoremap <C-Z> u
+inoremap <C-Z> <Esc>ua
+nnoremap <C-Y> <C-R>
+inoremap <C-Y> <Esc><C-R>a
 
 imap <C-W> <Esc><C-W>
 
@@ -87,9 +87,9 @@ nmap <C-P> :tabp<CR>
 imap <C-C> <Esc>:tabc<CR>
 nmap <C-C> :tabc<CR>
 
-nmap <C-_> gcc
-imap <C-_> <Esc>gcc a
-vmap <C-_> gc
+nmap <C-_> gcc<CR>
+imap <C-_> <Esc>gcc<CR>a
+vmap <C-_> gc<CR>
 
 nmap <F3> :noh<CR>
 
