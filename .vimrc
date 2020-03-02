@@ -46,8 +46,11 @@ hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
 hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 set background=dark
+" colorscheme spacegray
 colorscheme gruvbox
 " colorscheme solarized8
+" colorscheme deus
+" colorscheme gotham
 
 " }}}
 
@@ -116,6 +119,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'dkprice/vim-easygrep'
 Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 " COC.nvim {{{
@@ -148,8 +152,11 @@ let g:ctrlp_follow_symlinks=1
 " }}}
 
 " Airline {{{
+" AirlineTheme solarized
+" let g:airline_solarized_bg='dark'
+
 if !exists('g:airline_symbols')
-let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 " let g:airline_left_sep = '▶'
 let g:airline_left_alt_sep = '❯'
@@ -157,7 +164,8 @@ let g:airline_left_alt_sep = '❯'
 let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
-"let g:airline_theme='simple'
+
+" let g:airline_theme='solarized'
 "let g:airline_statusline_ontop=1
 " }}}
 
@@ -168,7 +176,7 @@ let g:go_fmt_command = "goimports"
 " NERDTree {{{
 let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeWinPos='left'
-let NERDTreeWinSize=32
+let NERDTreeWinSize=28
 let NERDTreeChDirMode=1
 nmap <F5> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
