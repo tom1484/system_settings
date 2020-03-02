@@ -117,7 +117,7 @@ export PATH=$PATH:$GOPATH:$GOBIN
 # set -o vi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f ~/.sudhindra.zsh ]] || source ~/.sudhindra.zsh
 # [[ ! -f ~/.dotfiles.zsh ]] || source ~/.dotfiles.zsh
 
