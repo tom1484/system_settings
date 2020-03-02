@@ -51,7 +51,7 @@ POWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND='cyan'
 POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND='black'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon battery dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status time dir_writable ip custom_wifi_signal ram background_jobs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time ip custom_wifi_signal ram background_jobs)
 
 # POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 
