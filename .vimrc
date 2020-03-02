@@ -79,13 +79,13 @@ nnoremap <C-Y> <C-R>
 inoremap <C-Y> <Esc><C-R>a
 
 imap <C-W> <Esc><C-W>
+imap <C-W>c <Esc>:tabc<CR>
+nmap <C-W>c :tabc<CR>
 
 imap <C-N> <Esc>:tabn<CR>
 nmap <C-N> :tabn<CR>
 imap <C-P> <Esc>:tabp<CR>
 nmap <C-P> :tabp<CR>
-imap <C-C> <Esc>:tabc<CR>
-nmap <C-C> :tabc<CR>
 
 nmap <C-_> gcc<CR>
 imap <C-_> <Esc>gcc<CR>a
@@ -151,9 +151,9 @@ let g:ctrlp_follow_symlinks=1
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
 endif
-let g:airline_left_sep = '▶'
+" let g:airline_left_sep = '▶'
 let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = '◀'
+" let g:airline_right_sep = '◀'
 let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
