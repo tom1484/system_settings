@@ -64,34 +64,56 @@ set softtabstop=4
 syntax on
 " }}}
 
-" Keymap {{{
-nmap <C-J> <C-F>
-imap <C-J> <Esc><C-F>a
-nmap <C-K> <C-B>
-imap <C-K> <Esc><C-B>a
+" function! DeleteWord(...)
+	" echo getpos('.')[1]
+	" while 
+" endfunction
+" nmap <C-A> :call DeleteWord()<CR>
 
-imap <C-S> <Esc>:w<CR>
-nmap <C-S> :w<CR>
+" Keymap {{{
+nnoremap <C-J> <C-F>
+inoremap <C-J> <Esc><C-F>a
+nnoremap <C-K> <C-B>
+inoremap <C-K> <Esc><C-B>a
+
+nnoremap <C-S> :w<CR>
+inoremap <C-S> <Esc>:w<CR>
 
 nmap <C-R> :Replace 
 imap <C-R> <Esc>:Replace 
 
-nnoremap <C-Z> u
-inoremap <C-Z> <Esc>ua
-nnoremap <C-Y> <C-R>
-inoremap <C-Y> <Esc><C-R>a
+nmap <C-Z> u
+imap <C-Z> <Esc>ua
+nmap <C-Y> <C-R>
+imap <C-Y> <Esc><C-R>a
 
-inoremap <C-D> <Esc>yypa
-nnoremap <C-D> yyp
+nmap <C-C> yy
+imap <C-C> <Esc>yya
+vmap <C-C> y
+
+nmap <C-X> dd
+imap <C-X> <Esc>dda
+vmap <C-X> d
+
+nmap <C-V> p
+imap <C-V> <Esc>pa
+
+nmap <leader>d "_dd
+imap <leader>d <Esc>"_dd
+
+nmap <C-D> yyp
+imap <C-D> <Esc>yypa
 
 imap <C-W> <Esc><C-W>
-imap <C-W>c <Esc>:tabc<CR>
 nmap <C-W>c :tabc<CR>
+imap <C-W>c <Esc>:tabc<CR>
 
-imap <C-N> <Esc>:tabn<CR>
 nmap <C-N> :tabn<CR>
-imap <C-P> <Esc>:tabp<CR>
+imap <C-N> <Esc>:tabn<CR>
 nmap <C-P> :tabp<CR>
+imap <C-P> <Esc>:tabp<CR>
+nnoremap <C-Q> :tabclose<CR>
+inoremap <C-Q> <Esc>:tabclose<CR>
 
 nmap <C-_> gcc<CR>
 imap <C-_> <Esc>gcc<CR>a
@@ -101,6 +123,7 @@ nmap <F3> :noh<CR>
 
 nmap <C-T> :!
 imap <C-T> <Esc>:!
+vmap <C-T> <Esc>:!
 
 " }}}
 
