@@ -81,6 +81,9 @@ inoremap <C-Z> <Esc>ua
 nnoremap <C-Y> <C-R>
 inoremap <C-Y> <Esc><C-R>a
 
+inoremap <C-D> <Esc>yypa
+nnoremap <C-D> yyp
+
 imap <C-W> <Esc><C-W>
 imap <C-W>c <Esc>:tabc<CR>
 nmap <C-W>c :tabc<CR>
@@ -98,9 +101,11 @@ nmap <F3> :noh<CR>
 
 nmap <C-T> :!
 imap <C-T> <Esc>:!
+
 " }}}
 
 " Plugin {{{
+
 call plug#begin('~/.vim/bundle/')
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode'
@@ -123,6 +128,7 @@ Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 " COC.nvim {{{
+
 let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-pairs',
@@ -137,9 +143,11 @@ inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:coc_snippet_next = '<C-N>'
+
 " }}}
 
 " CtrlP {{{
+
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
@@ -149,11 +157,10 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+
 " }}}
 
 " Airline {{{
-" AirlineTheme solarized
-" let g:airline_solarized_bg='dark'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -165,8 +172,6 @@ let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
 
-" let g:airline_theme='solarized'
-"let g:airline_statusline_ontop=1
 " }}}
 
 " vim-go {{{
@@ -199,7 +204,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " Tagbar {{{
 nmap <F4> :TagbarToggle<CR>
-let g:tagbar_width=28
+let g:tagbar_width=30
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [
