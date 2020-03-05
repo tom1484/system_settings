@@ -80,8 +80,8 @@ nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>
 
 " close pane
-nnoremap <leader>q :q
-inoremap <leader>q <Esc>:q
+nnoremap <leader>q :q<CR>
+inoremap <leader>q <Esc>:q<CR>
 
 " replace
 nnoremap <C-R> :Replace 
