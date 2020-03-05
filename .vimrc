@@ -79,6 +79,10 @@ inoremap <C-K> <Esc><C-B>a
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>
 
+" close pane
+nnoremap <leader>q :q
+inoremap <leader>q <Esc>:q
+
 " replace
 nnoremap <C-R> :Replace 
 inoremap <C-R> <Esc>:Replace 
