@@ -29,8 +29,17 @@ int N;
 char c;
 pii pos[maxn];
 bool edge[maxn][maxn];
+bool reach[maxn][maxn];
 double path[maxn][maxn];
 double diam[maxn];
+
+void dfs(int s, int i) {
+	reach[s][i] = true;
+	FOR (j, 0, N)
+		if (edge[i][j] && !reach[s][j])
+			dfs(s, j);
+	return ;
+}
 
 int main () {
 
@@ -38,53 +47,42 @@ int main () {
 	FOR (i, 0, N)
 		cin >> pos[i].ft >> pos[i].sd;
 	
-	FOR (i, 0, N) 
+	FOR (i, 0, N) {
 		FOR (j, 0, N) {
 			cin >> c;
 			edge[i][j] = c-'0';
-			if (edge[i][j] || i == j)
+			if (edge[i][j] && i != j)
 				path[i][j] = path[j][i] = 
 					sqrt(pow(pos[i].ft-pos[j].ft, 2)+pow(pos[i].sd-pos[j].sd, 2));
+			else if (i == j)
+				path[i][j] = 0;
 			else
 				path[i][j] = path[j][i] = 1e9;
 		}
+	}
 
-	memset(diam, 0, sizeof diam);
-	FOR (i, 0, N)
-		FOR (j, 0, N)
-			FOR (k, 0, N) {
+	FOR (k, 0, N)
+		FOR (i, 0, N)
+			FOR (j, 0, N)
 				path[i][j] = min(path[i][j], path[i][k]+path[k][j]);
-				if (path[i][j] < 1e8)
-					edge[i][j] = true;
-			}
 
-	FOR (i, 0, N)
+	double gdiam = 0;
+	FOR (i, 0, N) {
+		memset(reach[i], 0, sizeof reach[i]);
+		dfs(i, i);
 		FOR (j, 0, N)
-			if (edge[i][j])
+			if (reach[i][j])
 				diam[i] = max(diam[i], path[i][j]);
-
-	/* FOR (i, 0, N) { */
-		/* FOR (j, 0, N) */
-			/* printf("%6.2lf ", path[i][j]); */
-			/* printf("%d", edge[i][j]); */
-		/* printf("\n"); */
-		/* printf("\n"); */
-	/* } */
-
-	/* FOR (i, 0, N) */
-		/* cout << diam[i] << '\n'; */
-		/* printf("%lf\n", diam[i]); */
+		gdiam = max(gdiam, diam[i]);
+	}
 
 	double ans = 1e9;
 	FOR (i, 0, N)
 		FOR (j, 0, N)
-			if (!edge[i][j])
+			if (!reach[i][j])
 				ans = min(ans, diam[i]+diam[j]+
 						sqrt(pow(pos[i].ft-pos[j].ft, 2)+pow(pos[i].sd-pos[j].sd, 2)));
-	cout << fixed << setprecision(6) << ans << '\n';
-	/* printf("%lf\n", ans); */
-
-	/* printf("%lf %lf\n", diam[2], diam[6]); */
+	cout << fixed << setprecision(6) << max(gdiam, ans) << '\n';
 
 	return 0;
 }
