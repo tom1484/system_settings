@@ -1,0 +1,6 @@
+curr=./
+cd ~/Documents
+git add --all
+git commit -m 'update Documents'
+git push https://tom1484:angelus2003611@github.com/tom1484/Documents.git
+cd $curr
