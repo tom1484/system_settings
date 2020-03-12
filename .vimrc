@@ -79,9 +79,8 @@ inoremap <C-K> <Esc><C-B>a
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <Esc>:w<CR>
 
-" quit
-nnoremap <C-Q> :q<CR>
-inoremap <C-Q> <Esc>:q<CR>
+" change pane
+inoremap <C-W> <Esc><C-W>
 
 " replace
 nnoremap <C-R> :Replace 
@@ -110,8 +109,8 @@ nnoremap <C-D> "_dd
 inoremap <C-D> <Esc>"_dda
 
 " tab manipulation
-nnoremap <C-W>c :tabc<CR>
-inoremap <C-W>c <Esc>:tabc<CR>
+nnoremap <C-Q> :tabc<CR>
+inoremap <C-Q> <Esc>:tabc<CR>
 
 nnoremap <C-N> :tabn<CR>
 inoremap <C-N> <Esc>:tabn<CR>
