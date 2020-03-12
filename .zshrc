@@ -105,8 +105,7 @@ plugins=(
 
 #source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 
-# export GOBASE=$HOME/go
-# alias setgo='setgo() { export GOPATH=${GOBASE%%/}/$1; export GOBIN=$GOPATH/bin }; setgo'
+alias pd='sh ~/.push_documents'
 
 export GOROOT=/usr/local/go
 # export GOBIN=$GOROOT/bin
