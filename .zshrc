@@ -106,6 +106,7 @@ plugins=(
 #source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 
 alias pd='sh ~/.push_documents'
+alias pp='sh ~/.pull_documents'
 
 export GOROOT=/usr/local/go
 # export GOBIN=$GOROOT/bin
