@@ -45,7 +45,7 @@ highlight cursorline ctermfg=NONE ctermbg=237 cterm=bold guifg=NONE guibg=NONE g
 
 set hlsearch
 noh
-set relativenumber
+" set relativenumber
 
 hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
 hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
@@ -151,7 +151,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
-Plug 'dkprice/vim-easygrep'
+" Plug 'dkprice/vim-easygrep'
 Plug 'altercation/vim-colors-solarized'
 Plug 'lifepillar/vim-solarized8'
 call plug#end()
