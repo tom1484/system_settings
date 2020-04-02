@@ -45,7 +45,9 @@ highlight cursorline ctermfg=NONE ctermbg=237 cterm=bold guifg=NONE guibg=NONE g
 
 set hlsearch
 noh
-" set relativenumber
+set relativenumber
+set mouse=a
+" set number
 
 hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
 hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
@@ -83,14 +85,20 @@ inoremap <C-S> <Esc>:w<CR>
 inoremap <C-W> <Esc><C-W>
 
 " replace
-nnoremap <C-R> :Replace 
-inoremap <C-R> <Esc>:Replace 
+nnoremap <C-R> :Farr<CR> 
+inoremap <C-R> <Esc>:Farr<CR>  
+
+" find
+nnoremap <C-F> :Farf<CR>
+inoremap <C-F> <Esc>:Farf<CR> 
 
 " undo/redo
 nnoremap <C-Z> u
 inoremap <C-Z> <Esc>ua
 nnoremap <C-Y> <C-R>
 inoremap <C-Y> <Esc><C-R>a
+
+nnoremap <C-M> <C-M>
 
 " copy/cut/paste
 nnoremap <C-C> yy
@@ -152,6 +160,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 " Plug 'dkprice/vim-easygrep'
+Plug 'brooth/far.vim'
+Plug 'tmhedberg/matchit'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'altercation/vim-colors-solarized'
 Plug 'lifepillar/vim-solarized8'
 call plug#end()
@@ -186,6 +197,31 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+
+" }}}
+
+" Far.vim {{{
+
+set lazyredraw
+set regexpengine=1
+set ignorecase smartcase
+let g:far#enable_undo=1
+
+" }}}
+
+" Multiple-Cursor {{{
+
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<F6>'
+let g:multi_cursor_select_all_word_key = '<A-N>'
+let g:multi_cursor_start_key           = 'g<F6>'
+let g:multi_cursor_select_all_key      = 'g<A-N>'
+let g:multi_cursor_next_key            = '<C-N>'
+let g:multi_cursor_prev_key            = '<C-P>'
+let g:multi_cursor_skip_key            = '<C-X>'
+let g:multi_cursor_quit_key            = '<Esc>'
 
 " }}}
 
