@@ -45,14 +45,20 @@ highlight cursorline ctermfg=NONE ctermbg=237 cterm=bold guifg=NONE guibg=NONE g
 
 set hlsearch
 noh
-set relativenumber
 set mouse=a
-" set number
+
+set number relativenumber
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
 
 hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
 hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 set background=dark
+" colorscheme monokai
 colorscheme gruvbox
 
 " }}}
