@@ -58,8 +58,9 @@ hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
 hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 set background=dark
+" set background=light
 " colorscheme monokai
-colorscheme gruvbox
+" colorscheme gruvbox
 
 " }}}
 
@@ -165,12 +166,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
-" Plug 'dkprice/vim-easygrep'
 Plug 'brooth/far.vim'
 Plug 'tmhedberg/matchit'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'altercation/vim-colors-solarized'
-Plug 'lifepillar/vim-solarized8'
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 " COC.nvim {{{
@@ -217,21 +216,23 @@ let g:far#enable_undo=1
 
 " Multiple-Cursor {{{
 
-let g:multi_cursor_use_default_mapping=0
+" let g:multi_cursor_use_default_mapping=0
 
-" Default mapping
-let g:multi_cursor_start_word_key      = '<F6>'
-let g:multi_cursor_select_all_word_key = '<A-N>'
-let g:multi_cursor_start_key           = 'g<F6>'
-let g:multi_cursor_select_all_key      = 'g<A-N>'
-let g:multi_cursor_next_key            = '<C-N>'
-let g:multi_cursor_prev_key            = '<C-P>'
-let g:multi_cursor_skip_key            = '<C-X>'
-let g:multi_cursor_quit_key            = '<Esc>'
+" " Default mapping
+" let g:multi_cursor_start_word_key      = '<F6>'
+" let g:multi_cursor_select_all_word_key = '<A-N>'
+" let g:multi_cursor_start_key           = 'g<F6>'
+" let g:multi_cursor_select_all_key      = 'g<A-N>'
+" let g:multi_cursor_next_key            = '<C-N>'
+" let g:multi_cursor_prev_key            = '<C-P>'
+" let g:multi_cursor_skip_key            = '<C-X>'
+" let g:multi_cursor_quit_key            = '<Esc>'
 
 " }}}
 
 " Airline {{{
+
+let g:airline_theme='gruvbox'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -242,6 +243,12 @@ let g:airline_left_alt_sep = '❯'
 let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
+
+" }}}
+
+" Gruvbox {{{
+
+colorscheme gruvbox
 
 " }}}
 
