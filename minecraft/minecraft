@@ -20,12 +20,12 @@ SERVICE='spigot.jar'	#The name of the jar file used to boot the server, also the
 SCREENNAME='minecraft'	#The name screen will use
 OPTIONS='nogui'			#Optional arguments for MineCraft
 # USERNAME='minecraft'			#The user name of the Linux account to be used
-USERNAME='tom2003611'			#The user name of the Linux account to be used
+USERNAME=`whoami`			#The user name of the Linux account to be used
 WORLD='world'			#The selected world to load when the server boots
-MCPATH="/home/$USERNAME/server/$1/"	#The file path for the directory where the server jar is held
+MCPATH="/home/$USERNAME/MinecraftServer/$1/"	#The file path for the directory where the server jar is held
 BACKUPPATH="/home/$USERNAME/mcserver_backup/$1/"	#The file path for the directory for the back ups of the server
-MAXHEAP=1536			#The maximum amount of ram allocated to the server
-MINHEAP=1024			#The minimum amount of ram allocated to the server
+MAXHEAP=800			#The maximum amount of ram allocated to the server
+MINHEAP=512			#The minimum amount of ram allocated to the server
 HISTORY=1024			
 # INVOCATION="java -Xms${MINHEAP}M -Xmx${MAXHEAP}M -XX:+UseConcMarkSweepGC -jar $SERVICE $OPTIONS"
 INVOCATION="java -Xms${MINHEAP}M -Xmx${MAXHEAP}M -jar $SERVICE $OPTIONS"
@@ -124,20 +124,25 @@ mc_backup() {
 	BACKUP_FILE="$BACKUPPATH/${WORLD}_${NOW}.tar"
 	echo "Backing up minecraft world..."
 	#as_user "cd $MCPATH && cp -r $WORLD $BACKUPPATH/${WORLD}_`date "+%Y.%m.%d_%H.%M"`"
-	as_user "tar -C \"$MCPATH\" -cf \"$BACKUP_FILE\" $WORLD"
-	as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" ${WORLD}_nether"
-	as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" ${WORLD}_the_end"
-	as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" server.properties"
+	#as_user "tar -C \"$MCPATH\" -cf \"$BACKUP_FILE\" $WORLD"
+	#as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" ${WORLD}_nether"
+	#as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" ${WORLD}_the_end"
+	#as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" server.properties"
+	tar -C \"$MCPATH\" -cf \"$BACKUP_FILE\" $WORLD
+	tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" ${WORLD}_nethe
+	tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" ${WORLD}_the_end
+	tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" server.properties
 	#as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" plugins"
 
 echo "Backing up $SERVICE"
-   as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" $SERVICE"
+   #as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" $SERVICE"
+   tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" $SERVICE
    #as_user "cp \"$MCPATH/$SERVICE\" \"$BACKUPPATH/minecraft_server_${NOW}.jar\""
 
    mc_saveon
 
    echo "Compressing backup..."
-   as_user "gzip -f \"$BACKUP_FILE\""
+   gzip -f \"$BACKUP_FILE\"
    echo "Done."
 }
 #Allows the execution of commands outside of the screen
@@ -147,7 +152,7 @@ mc_command() {
   then					#Writes to the latest log
     pre_log_len=`wc -l "$MCPATH/logs/latest.log" | awk '{print $2}'`	
     echo "$SERVICE is running... executing command"
-    as_user "screen -p 0 -S $SCREENNAME -X eval 'stuff \"$command\"\015'"
+    screen -p 0 -S $SCREENNAME -X eval 'stuff \"$command\"\015'
     sleep .1 # assumes that the command will run and print to the log file in less than .1 seconds
     # print output
     tail -n $[`wc -l "$MCPATH/logs/latest.log" | awk '{print $2}'`-$pre_log_len] "$MCPATH/logs/latest.log"
