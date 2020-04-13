@@ -92,12 +92,12 @@ inoremap <C-S> <Esc>:w<CR>
 inoremap <C-W> <Esc><C-W>
 
 " replace
-nnoremap <C-R> :Farr<CR> 
-inoremap <C-R> <Esc>:Farr<CR>  
+nnoremap <C-R> :Farr<CR>
+inoremap <C-R> <Esc>:Farr<CR>
 
 " find
 nnoremap <C-F> :Farf<CR>
-inoremap <C-F> <Esc>:Farf<CR> 
+inoremap <C-F> <Esc>:Farf<CR>
 
 " undo/redo
 nnoremap <C-Z> u
