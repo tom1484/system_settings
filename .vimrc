@@ -170,6 +170,7 @@ Plug 'tpope/vim-commentary'
 Plug 'brooth/far.vim'
 Plug 'tmhedberg/matchit'
 Plug 'morhetz/gruvbox'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 " COC.nvim {{{
@@ -188,6 +189,13 @@ inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:coc_snippet_next = '<C-N>'
+
+" }}}
+
+" Vim-markdown {{{
+
+let g:vim_markdown_math = 1
+let g:vim_markdown_toc_autofit = 1
 
 " }}}
 
