@@ -103,10 +103,15 @@ plugins=(
 	git z zsh-autosuggestions extract web-search zsh-syntax-highlighting zsh-completions tmux
 )
 
-#source ~/.oh-my-zsh/plugins/incr/incr*.zsh
+# source ~/.oh-my-zsh/plugins/incr/incr*.zsh
+
+# export LANG=en_US.UTF-8
+export LANG="en_US.UTF-8"
 
 alias pd='sh ~/.push_documents'
 alias pp='sh ~/.pull_documents'
+
+alias update="git add --all; git commit -m 'update'; git push"
 
 export GOROOT=/usr/local/go
 # export GOBIN=$GOROOT/bin
