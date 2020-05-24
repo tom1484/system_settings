@@ -42,6 +42,7 @@ source $VIMRUNTIME/menu.vim
 
 set cursorline
 highlight cursorline ctermfg=NONE ctermbg=237 cterm=bold guifg=NONE guibg=NONE gui=bold
+" highlight SignColumn guibg=darkgrey
 
 set hlsearch
 noh
@@ -168,8 +169,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'brooth/far.vim'
 Plug 'tmhedberg/matchit'
-" Plug 'terryma/vim-multiple-cursors'
 Plug 'morhetz/gruvbox'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 " COC.nvim {{{
@@ -191,14 +192,20 @@ let g:coc_snippet_next = '<C-N>'
 
 " }}}
 
+" Vim-markdown {{{
+
+let g:vim_markdown_math = 1
+let g:vim_markdown_toc_autofit = 1
+
+" }}}
+
 " CtrlP {{{
 
-let g:ctrlp_map = '<leader>p'
+let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlP'
-map <leader>f :CtrlPMRU<CR>
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
-let g:ctrlp_max_height=15
+let g:ctrlp_max_height=30
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
@@ -218,7 +225,6 @@ let g:far#enable_undo=1
 
 " let g:multi_cursor_use_default_mapping=0
 
-" " Default mapping
 " let g:multi_cursor_start_word_key      = '<F6>'
 " let g:multi_cursor_select_all_word_key = '<A-N>'
 " let g:multi_cursor_start_key           = 'g<F6>'
@@ -227,6 +233,13 @@ let g:far#enable_undo=1
 " let g:multi_cursor_prev_key            = '<C-P>'
 " let g:multi_cursor_skip_key            = '<C-X>'
 " let g:multi_cursor_quit_key            = '<Esc>'
+
+" }}}
+
+" Gitgutterr {{{
+
+let g:gitgutter_override_sign_column_highlight = 0
+highlight clear SignColumn
 
 " }}}
 
@@ -255,6 +268,14 @@ colorscheme gruvbox
 " vim-go {{{
 
 let g:go_fmt_command = "goimports"
+
+" }}}
+
+" Ranger {{{
+
+" let g:NERDTreeHijackNetrw = 0
+" let g:ranger_replace_netrw = 1
+" let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 " }}}
 
