@@ -45,7 +45,7 @@ POWERLEVEL9K_CUSTOM_OS_ICON='echo  $(whoami)'
 POWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND='cyan'
 POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND='black'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon battery ssh dir vcs vi_mode)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv custom_os_icon battery ssh dir vcs vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time ip public_ip custom_wifi_signal ram load)
 
 POWERLEVEL9K_TIME_FORMAT="%D{%y/%m/%d \uf073 %H:%M:%S}"
