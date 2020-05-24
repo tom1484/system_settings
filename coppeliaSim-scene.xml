@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/coppeliaSimScene">
+        <sub-class-of type="application/octet-stream"/>
+        <comment>CoppeliaSim Scene</comment>
+        <glob pattern="*.ttt"/>
+    </mime-type>
+</mime-info>
