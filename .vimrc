@@ -1,5 +1,5 @@
 " Startup {{{
-
+"
 set nofoldenable
 set autoread
 "autocmd BufWritePost ~/.vimrc source ~/.vimrc
@@ -79,7 +79,7 @@ syntax on
 
 " Keymap {{{
 
-" page-down/up
+" page down/up
 nnoremap <C-J> <C-F>
 inoremap <C-J> <Esc><C-F>a
 nnoremap <C-K> <C-B>
@@ -176,19 +176,25 @@ call plug#end()
 " COC.nvim {{{
 
 let g:coc_global_extensions = [
+	\ "coc-lists",
+	\ "coc-vimlsp",
+	\ "coc-python",
+	\ "coc-ccls",
+	\ "coc-tasks",
+	\ "coc-json",
+	\ "coc-vimtex",
+	\ "coc-html",
+	\ "coc-css",
 	\ 'coc-snippets',
-	\ 'coc-pairs',
-	\ 'coc-tsserver',
-	\ 'coc-prettier', 
-	\ 'coc-json', 
 \ ]
 
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<CR>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:coc_snippet_next = '<C-N>'
+let g:coc_snippet_previous = '<C-P>'
 
 " }}}
 
