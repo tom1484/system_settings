@@ -29,6 +29,8 @@ set encoding=utf-8
 set langmenu=zh_CN
 let $LANG = 'en_US.UTF-8'
 "language messages zh_CN.UTF-8
+let &t_TI = ""
+let &t_TE = ""
 
 " }}}
 
