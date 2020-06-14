@@ -105,29 +105,30 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# source ~/.oh-my-zsh/plugins/incr/incr*.zsh
+# disable <C-S>
+stty stop undef
+stty start undef
 
-# export LANG=en_US.UTF-8
+# set language
 export LANG="en_US.UTF-8"
 
+# push/pull Documents
 alias pd='sh ~/.push_documents'
 alias pp='sh ~/.pull_documents'
 
+# easy push
 alias update="git add --all; git commit -m 'update'; git push"
 
+# golang settings
 export GOROOT=/usr/local/go
 # export GOBIN=$GOROOT/bin
 export GOBIN=
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH:$GOBIN
 
-set -o vi
-setopt no_nomatch
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# source zsh settings
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f ~/.sudhindra.zsh ]] || source ~/.sudhindra.zsh
-# [[ ! -f ~/.dotfiles.zsh ]] || source ~/.dotfiles.zsh
 
-stty stop undef
-stty start undef
+# enable fzf search
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
