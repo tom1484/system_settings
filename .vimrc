@@ -104,8 +104,10 @@ inoremap <C-D> <Esc>"_dda
 vnoremap <C-D> "_dd<Esc>
 
 " tab manipulation
-nnoremap <C-Q> :tabclose<CR>
-inoremap <C-Q> <Esc>:tabclose<CR>
+" nnoremap <C-Q> :tabclose<CR>
+" inoremap <C-Q> <Esc>:tabclose<CR>
+nnoremap <C-Q> :q<CR>
+inoremap <C-Q> <Esc>:q<CR>
 
 nnoremap <C-N> :tabn<CR>
 inoremap <C-N> <Esc>:tabn<CR>
@@ -124,8 +126,11 @@ inoremap <C-T> <Esc>:!
 vnoremap <C-T> <Esc>:!
 
 " toggle plugs
-nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
+inoremap <F3> :NERDTreeToggle<CR>
+
 nnoremap <F4> :TagbarToggle<CR>
+inoremap <F4> :TagbarToggle<CR>
 
 " }}}
 
@@ -207,7 +212,7 @@ highlight clear SignColumn
 
 " Airline {{{
 
-let g:airline_theme='gruvbox'
+let g:airline_theme='base16_gruvbox_dark_hard'
 
 " }}}
 
