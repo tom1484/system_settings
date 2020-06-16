@@ -16,6 +16,7 @@ set whichwrap=b,s,<,>,[,]
 set nobomb
 set clipboard=unnamed
 set mouse=a
+set foldmethod=indent
 
 " }}}
 
@@ -39,6 +40,8 @@ augroup numbertoggle
 augroup END
 
 set background=dark
+
+set list lcs=tab:\|\ 
 
 " }}}
 
@@ -155,6 +158,9 @@ call plug#begin('~/.vim/bundle/')
 	Plug 'brooth/far.vim'
 	Plug 'tmhedberg/matchit'
 	Plug 'morhetz/gruvbox'
+	Plug 'tmhedberg/simpylfold'
+	" Plug 'nathanaelkane/vim-indent-guides'
+	Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " COC.nvim {{{
@@ -270,5 +276,11 @@ let g:tagbar_type_go = {
 \ }
 
 " }}}
+
+" }}}
+
+" SimplyFold {{{
+
+let g:SimpylFold_docstring_preview=1
 
 " }}}
