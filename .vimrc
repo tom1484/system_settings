@@ -18,6 +18,7 @@ set clipboard=unnamed
 set mouse=a
 set foldmethod=indent
 set conceallevel=1
+setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " }}}
 
