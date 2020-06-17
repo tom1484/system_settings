@@ -132,10 +132,10 @@ vnoremap <C-T> <Esc>:!
 
 " toggle plugs
 nnoremap <F3> :NERDTreeToggle<CR>
-inoremap <F3> <Esc>:NERDTreeToggle<CR>
+inoremap <F3> <Esc>:NERDTreeToggle<CR>a
 
 nnoremap <F4> :TagbarToggle<CR>
-inoremap <F4> <Esc>:TagbarToggle<CR>
+inoremap <F4> <Esc>:TagbarToggle<CR>a
 
 " }}}
 
