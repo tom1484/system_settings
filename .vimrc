@@ -17,13 +17,14 @@ set nobomb
 set clipboard=unnamed
 set mouse=a
 set foldmethod=indent
+set conceallevel=1
 
 " }}}
 
 " Lang & Encoding {{{
 
-let &t_TI = ""
-let &t_TE = ""
+let &t_TI=""
+let &t_TE=""
 
 " }}}
 
@@ -73,14 +74,14 @@ inoremap <C-S> <Esc>:w<CR>
 inoremap <C-W> <Esc><C-W>
 
 " replace
-nnoremap <C-R> :Farr<CR>
-inoremap <C-R> <Esc>:Farr<CR>
-vnoremap <C-R> :Farr<CR>
+nnoremap <C-R> :Far 
+inoremap <C-R> <Esc>:Far 
+vnoremap <C-R> :Far 
 
 " find
-nnoremap <C-F> :Farf<CR>
-inoremap <C-F> <Esc>:Farf<CR>
-vnoremap <C-R> :Farr<CR>
+nnoremap <C-F> :F 
+inoremap <C-F> <Esc>:F 
+vnoremap <C-R> :F
 
 " undo/redo
 nnoremap <C-Z> u
@@ -107,10 +108,10 @@ inoremap <C-D> <Esc>"_dda
 vnoremap <C-D> "_dd<Esc>
 
 " tab manipulation
-" nnoremap <C-Q> :tabclose<CR>
-" inoremap <C-Q> <Esc>:tabclose<CR>
-nnoremap <C-Q> :q<CR>
-inoremap <C-Q> <Esc>:q<CR>
+nnoremap <C-Q> :tabclose<CR>
+inoremap <C-Q> <Esc>:tabclose<CR>
+" nnoremap <C-Q> :q<CR>
+" inoremap <C-Q> <Esc>:q<CR>
 
 nnoremap <C-N> :tabn<CR>
 inoremap <C-N> <Esc>:tabn<CR>
@@ -160,12 +161,12 @@ call plug#begin('~/.vim/bundle/')
 	Plug 'morhetz/gruvbox'
 	Plug 'tmhedberg/simpylfold'
 	" Plug 'nathanaelkane/vim-indent-guides'
-	Plug 'Yggdroot/indentLine'
+	" Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " COC.nvim {{{
 
-let g:coc_global_extensions = [
+let g:coc_global_extensions=[
 	\ "coc-lists",
 	\ "coc-vimlsp",
 	\ "coc-python",
@@ -183,14 +184,14 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<CR>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-let g:coc_snippet_next = '<C-N>'
-let g:coc_snippet_previous = '<C-P>'
+let g:coc_snippet_next='<C-N>'
+let g:coc_snippet_previous='<C-P>'
 
 " }}}
 
 " CtrlP {{{
 
-let g:ctrlp_map = '<leader>f'
+let g:ctrlp_map='<leader>f'
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=30
@@ -205,7 +206,23 @@ let g:ctrlp_follow_symlinks=1
 set lazyredraw
 set regexpengine=1
 set ignorecase smartcase
+
 let g:far#enable_undo=1
+let g:far#highlight_match=1
+
+let g:far#window_layout='right'
+let g:far#window_width=80
+let g:far#preview_window_layout='bottom'
+
+let g:far#auto_preview=1
+let g:far#auto_preview_on_start=1
+
+let g:far#default_file_mask='%'
+let g:far#auto_delete_replaced_buffers=1
+
+" let g:far#mapping={
+	" \ "quit" : "<CR>",
+	\ }
 
 " }}}
 
@@ -230,7 +247,7 @@ colorscheme gruvbox
 
 " vim-go {{{
 
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command="goimports"
 
 " }}}
 
@@ -247,9 +264,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Tagbar {{{
 
 let g:tagbar_width=28
-let g:tagbar_type_go = {
+let g:tagbar_type_go={
 	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
+	\ 'kinds' : [
 		\ 'p:package',
 		\ 'i:imports:1',
 		\ 'c:constants',
