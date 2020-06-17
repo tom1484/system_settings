@@ -215,14 +215,7 @@ let g:far#window_width=80
 let g:far#preview_window_layout='bottom'
 
 let g:far#auto_preview=1
-let g:far#auto_preview_on_start=1
-
-let g:far#default_file_mask='%'
-let g:far#auto_delete_replaced_buffers=1
-
-" let g:far#mapping={
-	" \ "quit" : "<CR>",
-	\ }
+let g:far#auto_preview_on_start=0
 
 " }}}
 
