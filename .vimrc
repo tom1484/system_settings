@@ -82,7 +82,7 @@ vnoremap <C-R> :Far
 " find
 nnoremap <C-F> :F 
 inoremap <C-F> <Esc>:F 
-vnoremap <C-R> :F
+vnoremap <C-F> :F
 
 " undo/redo
 nnoremap <C-Z> u
