@@ -34,6 +34,3 @@ alias update="git add --all; git commit -m 'update'; git push"
 # application settings
 [ -d "$HOME/.local/bin" ] && PATH="$PATH:$HOME/.local/bin"
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco200/bin
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGL.so
-
