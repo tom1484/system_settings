@@ -145,7 +145,7 @@ inoremap <F4> <Esc>:TagbarToggle<CR>a
 
 " Plugin {{{
 
-call plug#begin('~/.vim/bundle/')
+call plug#begin('~/.vim/autoload/')
 	Plug 'fatih/vim-go'
 	Plug 'nsf/gocode'
 	Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -171,15 +171,8 @@ call plug#end()
 
 let g:coc_global_extensions=[
 	\ "coc-lists",
-	\ "coc-vimlsp",
-	\ "coc-python",
-	\ "coc-ccls",
-	\ "coc-tasks",
-	\ "coc-json",
-	\ "coc-vimtex",
-	\ "coc-html",
-	\ "coc-css",
 	\ 'coc-snippets',
+	\ "coc-prettier"
 \ ]
 
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
