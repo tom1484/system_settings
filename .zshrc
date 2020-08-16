@@ -1,16 +1,14 @@
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 export ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-# plugins=(
-# 	git z zsh-autosuggestions extract web-search zsh-syntax-highlighting zsh-completions tmux
-# )
 plugins=(
+	# git z zsh-autosuggestions extract web-search zsh-syntax-highlighting zsh-completions tmux
 	git zsh-syntax-highlighting tmux virtualenv
 )
+source $ZSH/oh-my-zsh.sh
 
 # disable <C-S>
 stty stop undef
