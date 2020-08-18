@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-=======
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-export ZSH=$HOME/.oh-my-zsh
->>>>>>> a63d75d5f469bdd073d2855530c3b354850387d2
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/tom1484/.oh-my-zsh"
@@ -17,7 +12,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-<<<<<<< HEAD
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -76,13 +70,9 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-=======
->>>>>>> a63d75d5f469bdd073d2855530c3b354850387d2
 plugins=(
-	# git z zsh-autosuggestions extract web-search zsh-syntax-highlighting zsh-completions tmux
 	git zsh-syntax-highlighting tmux virtualenv
 )
-source $ZSH/oh-my-zsh.sh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -135,9 +125,6 @@ alias update="git add --all; git commit -m 'update'; git push"
 # application settings
 [ -d "$HOME/.local/bin" ] && PATH="$PATH:$HOME/.local/bin"
 
-<<<<<<< HEAD
 export LD_LIBRARY_PATH=~/.mujoco/mujoco200/bin/
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGL.so
 
-=======
->>>>>>> a63d75d5f469bdd073d2855530c3b354850387d2
