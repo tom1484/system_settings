@@ -239,6 +239,8 @@
   typeset -g POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND=232
   typeset -g POWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND=242
 
+  typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND
+
   ################################[ prompt_char: prompt symbol ]################################
   # Transparent background.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_BACKGROUND=
@@ -831,7 +833,7 @@
 
   ######################################[ load: CPU load ]######################################
   # CPU load color
-  typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=130
+  typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND='white'
   # Show average CPU load over this many last minutes. Valid values are 1, 5 and 15.
   typeset -g POWERLEVEL9K_LOAD_WHICH=5
   # Load color when load is under 50%.
@@ -935,8 +937,8 @@
 
   ###[ virtualenv: python virtual environment (https://docs.python.org/3/library/venv.html) ]###
   # Python virtual environment color.
-  # typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=0
-  # typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=4
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND='white'
+  typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND='black'
   # Don't show Python version next to the virtual environment name.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
   # Separate environment name from Python version only with a space.
