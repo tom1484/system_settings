@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
-	<mime-type type="application/coppeliaSimModel">
-        <sub-class-of type="application/octet-stream"/>
-		<comment>CoppeliaSim Model</comment>
-        <glob pattern="*.ttm"/>
-    </mime-type>
-</mime-info>

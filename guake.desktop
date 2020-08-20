@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Guake
-Exec=bash -c 'sleep 3 && /usr/bin/guake'
-Terminal=false
-Categories=Utility;
