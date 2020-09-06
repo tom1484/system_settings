@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 stty stop undef
 stty start undef
 
+unsetopt nomatch
+
 # set language
 export LANG="en_US.UTF-8"
 
