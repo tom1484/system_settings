@@ -835,6 +835,8 @@
   ######################################[ load: CPU load ]######################################
   # CPU load color
   typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND='white'
+  typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND='red'
+  typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND='red'
   # Show average CPU load over this many last minutes. Valid values are 1, 5 and 15.
   typeset -g POWERLEVEL9K_LOAD_WHICH=5
   # Load color when load is under 50%.
