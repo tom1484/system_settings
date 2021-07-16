@@ -23,6 +23,8 @@ set conceallevel=1
 
 set formatoptions-=c formatoptions-=r formatoptions-=o
 
+silent !stty -ixon
+
 " }}}
 
 " Lang & Encoding {{{
@@ -146,9 +148,9 @@ inoremap <F4> <Esc>:TagbarToggle<CR>a
 " Plugin {{{
 
 call plug#begin('~/.vim/autoload/')
-	Plug 'fatih/vim-go'
-	Plug 'nsf/gocode'
-	Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+	" Plug 'fatih/vim-go'
+	" Plug 'nsf/gocode'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'scrooloose/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'majutsushi/tagbar'
@@ -242,7 +244,7 @@ let g:go_fmt_command="goimports"
 
 " NERDTree {{{
 
-let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_console_startup=0
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=28
 let NERDTreeChDirMode=1
