@@ -5,19 +5,35 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #Space::ToggleTerminal()
 
+; ShowTerminal()
+; {
+;     WinTitle := "_quake_ubuntu"
+    
+;     WinShow, %WinTitle%
+;     WinActivate, %WinTitle%
+
+;     WinGetPos, X, Y, W, H, %WinTitle%
+;     WinMove, %WinTitle%, , X, Y, W, H
+; }
+
 ShowAndPositionTerminal()
 {
     WinTitle := "_quake_ubuntu"
-    
+
     WinShow, %WinTitle%
     WinActivate, %WinTitle%
 
+    WinGetPos, TermX, TermY, TermW, TermH, %WinTitle%
     SysGet, WorkArea, MonitorWorkArea
-    TerminalWidth := A_ScreenWidth * 0.8
-    TerminalHeight := (WorkAreaBottom - WorkAreaTop) * 0.8
+    SysGet, MonitorArea, Monitor
 
-    WinMove, %WinTitle%,, (A_ScreenWidth - TerminalWidth) / 2, WorkAreaBottom - TerminalHeight, TerminalWidth, TerminalHeight,
+    if ((MonitorAreaRight - MonitorAreaLeft) != TermW || (MonitorAreaBottom - MonitorAreaTop) != TermH)
+    {
+        TargetTermW := A_ScreenWidth * 0.8
+        TargetTermH := (WorkAreaBottom - WorkAreaTop) * 0.8
 
+        WinMove, %WinTitle%, , (A_ScreenWidth - TargetTermW) / 2, WorkAreaBottom - TargetTermH, TargetTermW, TargetTermH,
+    }
 }
 
 ToggleTerminal()
@@ -42,15 +58,22 @@ ToggleTerminal()
     }
     else
     {
-        Run "c:\Users\angel\AppData\Local\Microsoft\WindowsApps\wt.exe" -w _quake -p "Ubuntu" --title "_quake_ubuntu"
-        Sleep, 1000
+        ; Run "c:\Users\angel\AppData\Local\Microsoft\WindowsApps\wt.exe" -f -p "Ubuntu" --title "_quake_ubuntu" --tabColor "#0063B1"
+        Run "c:\Users\angel\AppData\Local\Microsoft\WindowsApps\wt.exe" -f -p "Ubuntu" --title "_quake_ubuntu"
 
-        WinSet, AlwaysOnTop, On, %WinTitle%
-        ShowAndPositionTerminal()
+        loop
+        {
+            if (WinExist(WinTitle))
+            {
+                WinSet, AlwaysOnTop, On, %WinTitle%
+                ShowAndPositionTerminal()
+                break
+            }
+        }
     }
 }
 
-;=====================================================================================================================================================
+; =====================================================================================================================================================
 
 #Persistent
 
