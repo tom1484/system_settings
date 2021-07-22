@@ -1,5 +1,6 @@
 ; Recommended for performance and compatibility with future AutoHotkey releases.
-#NoEnv  
+#NoEnv
+#SingleInstance, Force
 
 ; Recommended for new scripts due to its superior speed and reliability.
 SendMode Input
@@ -8,27 +9,59 @@ SetWorkingDir %A_ScriptDir%
 
 ; =====================================================================================================================================================
 
-TermHwnd := 0x0
+TermID := 0
+IDFileName := "ID.txt"
 
-; Debugging
-DetectHiddenWindows, On
-TermHwnd := WinExist("_quake_terminal")
-DetectHiddenWindows, Off
+ReadTerminalID()
+
+ReadTerminalID()
+{
+    global TermID, IDFileName
+
+    If FileExist(IDFileName)
+    {
+        IDFile := FileOpen(IDFileName, "r")
+        FID := IDFile.Read()
+
+        DetectHiddenWindows, On
+        if WinExist("ahk_ID " + FID)
+            TermID := FID
+
+        DetectHiddenWindows, Off
+
+        IDFile.close()
+    }
+}
 
 ; =====================================================================================================================================================
 
-OnWinActiveChange(hWinEventHook, vEvent, hWnd)
+; OnWinActiveChange(hWinEventHook, vEvent, hWnd)
+; {
+;     global TermID
+;     static _ := DllCall("user32\SetWinEventHook", UInt, 0x3, UInt, 0x3, Ptr, 0, Ptr, RegisterCallback("OnWinActiveChange"), UInt, 0, UInt, 0, UInt, 0, Ptr)
+
+;     TermMatcher := "ahk_id " . TermID
+
+;     ; Hide terminal on lost focus
+;     If WinExist(TermMatcher) And Not WinActive(TermMatcher)
+;         WinHide, %TermMatcher%
+
+;     Return
+; }
+
+LostFocusListener()
+
+LostFocusListener()
 {
-    static _ := DllCall("user32\SetWinEventHook", UInt, 0x3, UInt, 0x3, Ptr, 0, Ptr, RegisterCallback("OnWinActiveChange"), UInt, 0, UInt, 0, UInt, 0, Ptr)
+    global TermID
 
-    global TermHwnd
-    TermMatcher := "ahk_id " . TermHwnd
-
-    ; Hide terminal on lost focus
-    If WinExist(TermMatcher) And Not WinActive(TermMatcher)
-        WinHide, %TermMatcher%
-
-    Return
+    Loop
+    {
+        TermMatcher := "ahk_id " . TermID
+        ; Hide terminal on lost focus
+        If WinExist(TermMatcher) And Not WinActive(TermMatcher)
+            WinHide, %TermMatcher%
+    }
 }
 
 ; ===================================================================================================================================================
@@ -39,8 +72,14 @@ ToggleTerminal()
 
 ActivateTerminal()
 {
-    global TermHwnd
-    TermMatcher := "ahk_id " . TermHwnd
+    global TermID
+
+    TermMatcher := "ahk_id " . TermID
+
+    ; Set always on top
+    DetectHiddenWindows, On
+    WinSet, AlwaysOnTop, On, %TermMatcher%
+    DetectHiddenWindows, Off
 
     ; Show and activate terminal
     WinShow, %TermMatcher%
@@ -72,33 +111,34 @@ ActivateTerminal()
 
 ToggleTerminal()
 {
-    global TermHwnd
-    TermMatcher := "ahk_id " . TermHwnd
-    
-    static PreviousActive := 0x0
+    global TermID, IDFileName
+    static PrevActiveID := 0
 
-    ; Fetch current window's ID
-    CurrentHwnd := WinExist("A")
+    TermMatcher := "ahk_id " . TermID
 
-    ; Update PreviousActive If the current window is not terminal
-    If CurrentHwnd != TermHwnd
-        PreviousActive := CurrentHwnd
+    ; Update PrevActiveID If the current window is not terminal
+    WinGet, CurrentID, ID, A
+    If Not (CurrentID == TermID)
+        PrevActiveID := CurrentID
 
     ; Check if terminal exists
     DetectHiddenWindows, On
+    ; ToolTip % WinExist(TermMatcher)
     If WinExist(TermMatcher)
     {
         DetectHiddenWindows, Off
 
         ; Show terminal If it's hidden
         If Not WinExist(TermMatcher) Or Not WinActive(TermMatcher)
+        {
             ActivateTerminal()
+        }
 
         ; Otherwise activate previously active window
         else If WinExist(TermMatcher)
         {
             WinHide, %TermMatcher%
-            WinActivate, ahk_id %PreviousActive%
+            WinActivate, ahk_id %PrevActiveID%
         }
     }
 
@@ -106,20 +146,21 @@ ToggleTerminal()
     Else
     {
         TermTitle := "_quake_terminal"
-        ; Run "c:\Users\angel\AppData\Local\Microsoft\WindowsApps\wt.exe" -f -p "Ubuntu" --title %TermTitle%
-        Run, "c:\Users\angel\AppData\Local\Microsoft\WindowsApps\wt.exe" -f --title %TermTitle%
+        Run, wt.exe -f --title %TermTitle%, , , TestPID
 
-        Loop
-        {
-            ; Activate terminal after it's created
-            TermHwnd := WinExist(TermTitle)
-            If TermHwnd
-            {
-                WinSet, AlwaysOnTop, On, ahk_id %TermHwnd%
-                ActivateTerminal()
-                break
-            }
-        }
+        ; Wait until terminal exists
+        While Not WinExist(TermTitle)
+        {}
+
+        ; Fetch terminal ID
+        WinGet, TermID, ID, %TermTitle%
+
+        ; Write terminal ID into file
+        IDFile := FileOpen(IDFileName, "w")
+        FID := IDFile.Write(TermID)
+        IDFile.close()
+
+        ActivateTerminal()
     }
 
     Return

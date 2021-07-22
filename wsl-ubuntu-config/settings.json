@@ -8,15 +8,15 @@
         },
         {
             "command": "unbound",
-            "keys": "ctrl+`"
-        },
-        {
-            "command": "unbound",
             "keys": "ctrl+c"
         },
         {
             "command": "unbound",
             "keys": "ctrl+v"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+`"
         },
         {
             "command": 
@@ -43,7 +43,15 @@
         },
         {
             "command": "openNewTabDropdown",
-            "keys": "alt+`"
+            "keys": "ctrl+`"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b"
+            },
+            "keys": "alt+q"
         }
     ],
     "copyFormatting": "none",
@@ -59,10 +67,12 @@
             "closeOnExit": "always",
             "colorScheme": "SpaceGray Eighties",
             "cursorShape": "filledBox",
+            "experimental.retroTerminalEffect": false,
             "font": 
             {
                 "face": "FiraCode NF",
-                "size": 12
+                "size": 12,
+                "weight": "normal"
             },
             "padding": "4",
             "scrollbarState": "hidden",
@@ -331,5 +341,6 @@
             "white": "#C0C0C0",
             "yellow": "#808000"
         }
-    ]
+    ],
+    "theme": "system"
 }
