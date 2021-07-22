@@ -79,7 +79,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting)
-plugins=(git autojump zsh-autosuggestions)
+plugins=(git autojump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,13 +112,6 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# setopt noflowcontrol
-# stty stop '' start '' -ixon
-# stty stop ''
-# stty start ''
-# stty -ixon
-# stty -ixoff
-
 setopt no_nomatch
 
 # push/pull Documents
@@ -136,4 +129,14 @@ alias update="git add --all; git commit -m 'update'; git push"
 cd ~
 
 ZLE_RPROMPT_INDENT=0
+
+# umount Windows disks
+echo 1484 | sudo -S umount -q /mnt/d /mnt/g > /dev/null 2>&1
+
+# key bindings
+bindkey '^H' backward-kill-word
+
+
+
+
 

@@ -25,6 +25,8 @@ set formatoptions-=c formatoptions-=r formatoptions-=o
 
 silent !stty -ixon
 
+set ttimeoutlen=0
+
 " }}}
 
 " Lang & Encoding {{{
@@ -68,10 +70,8 @@ syntax on
 " Keymap {{{
 
 " page down/up
-nnoremap <C-J> <C-F>
-inoremap <C-J> <Esc><C-F>a
-nnoremap <C-K> <C-B>
-inoremap <C-K> <Esc><C-B>a
+nnoremap <C-UP> 10k
+nnoremap <C-DOWN> 10j
 
 " saving
 nnoremap <C-S> :w<CR>
@@ -115,10 +115,10 @@ inoremap <C-D> <Esc>"_dda
 vnoremap <C-D> "_dd<Esc>
 
 " tab manipulation
-nnoremap <C-Q> :tabclose<CR>
-inoremap <C-Q> <Esc>:tabclose<CR>
-" nnoremap <C-Q> :q<CR>
-" inoremap <C-Q> <Esc>:q<CR>
+" nnoremap <C-Q> :tabclose<CR>
+" inoremap <C-Q> <Esc>:tabclose<CR>
+nnoremap <C-Q> :q<CR>
+inoremap <C-Q> <Esc>:q<CR>
 
 nnoremap <C-N> :tabn<CR>
 inoremap <C-N> <Esc>:tabn<CR>
@@ -137,11 +137,15 @@ inoremap <C-T> <Esc>:!
 vnoremap <C-T> <Esc>:!
 
 " toggle plugs
-nnoremap <F3> :NERDTreeToggle<CR>
-inoremap <F3> <Esc>:NERDTreeToggle<CR>a
+nnoremap <F1> :NERDTreeToggle<CR>
+inoremap <F1> <Esc>:NERDTreeToggle<CR>a
 
-nnoremap <F4> :TagbarToggle<CR>
-inoremap <F4> <Esc>:TagbarToggle<CR>a
+nnoremap <F2> :TagbarToggle<CR>
+inoremap <F2> <Esc>:TagbarToggle<CR>a
+
+" nnoremap <leader>f :CtrlP 
+" inoremap <leader>f <Esc>:CtrlP 
+
 
 " }}}
 
@@ -164,7 +168,7 @@ call plug#begin('~/.vim/autoload/')
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'tpope/vim-commentary'
 	Plug 'brooth/far.vim'
-	Plug 'tmhedberg/matchit'
+	" Plug 'tmhedberg/matchit'
 	Plug 'morhetz/gruvbox'
 	Plug 'pseewald/vim-anyfold'
 call plug#end()
@@ -178,12 +182,15 @@ let g:coc_global_extensions=[
 \ ]
 
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:coc_snippet_next='<C-N>'
 let g:coc_snippet_previous='<C-P>'
+
+" let g:coc_
 
 " }}}
 
@@ -230,6 +237,9 @@ highlight clear SignColumn
 " Airline {{{
 
 let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_powerline_fonts=1
+
+" \}
 
 " }}}
 
@@ -251,6 +261,8 @@ let g:nerdtree_tabs_open_on_console_startup=0
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=28
 let NERDTreeChDirMode=1
+let NERDTreeQuitOnOpen=1
+
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " }}}
@@ -258,6 +270,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Tagbar {{{
 
 let g:tagbar_width=28
+let g:tagbar_autoclose=1
+let g:tagbar_autofocus=1
+
 let g:tagbar_type_go={
 	\ 'ctagstype' : 'go',
 	\ 'kinds' : [
