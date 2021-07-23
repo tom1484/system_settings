@@ -115,8 +115,8 @@ source $ZSH/oh-my-zsh.sh
 setopt no_nomatch
 
 # push/pull Documents
-alias pd='sh ~/.push_documents'
-alias pp='sh ~/.pull_documents'
+alias pd='zsh ~/.push_documents'
+alias pp='zsh ~/.pull_documents'
 
 # easy push
 alias update="git add --all; git commit -m 'update'; git push"
@@ -127,7 +127,6 @@ alias update="git add --all; git commit -m 'update'; git push"
 # fc -R ~/.zsh_history
 
 cd ~
-
 ZLE_RPROMPT_INDENT=0
 
 # umount Windows disks
@@ -136,7 +135,11 @@ echo 1484 | sudo -S umount -q /mnt/d /mnt/g > /dev/null 2>&1
 # key bindings
 bindkey '^H' backward-kill-word
 
+# golang settings
+export GOROOT=/usr/lib/go-1.13
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=$HOME/Documents/Go
 
-
-
+alias SetGoPath="source ~/.set_go_path.sh"
+alias CreateGoProject="zsh ~/.create_go_project.sh"
 
