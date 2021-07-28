@@ -126,20 +126,24 @@ alias update="git add --all; git commit -m 'update'; git push"
 # strings -eS ~/.zsh_history_bad > ~/.zsh_history
 # fc -R ~/.zsh_history
 
-cd ~
+# cd ~
 ZLE_RPROMPT_INDENT=0
 
 # umount Windows disks
-echo 1484 | sudo -S umount -q /mnt/d /mnt/g > /dev/null 2>&1
+echo 1484 | sudo -S umount -q /mnt/g > /dev/null 2>&1
 
 # key bindings
 bindkey '^H' backward-kill-word
 
 # golang settings
-export GOROOT=/usr/lib/go-1.13
+export GOROOT=/usr/local/go
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/Documents/Go
 
 alias SetGoPath="source ~/.set_go_path.sh"
 alias CreateGoProject="zsh ~/.create_go_project.sh"
+
+# delay of escape
+# 10ms for key sequences
+KEYTIMEOUT=1
 

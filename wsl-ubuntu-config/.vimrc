@@ -1,35 +1,40 @@
 " Load setting for different filetype
 
-	autocmd filetype c source ~/.vim/filetype/c.vim
+	autocmd filetype c source ~/.vim/iletype/c.vim
 	autocmd filetype cpp source ~/.vim/filetype/cpp.vim
 	autocmd filetype python source ~/.vim/filetype/python.vim
+	autocmd filetype go source ~/.vim/filetype/go.vim
 
 " File
 
 	syntax on
 	filetype plugin indent on 
-	set foldlevel=1
+	set foldlevel=99
 
 " General
 
-	set autoread
 	set nocompatible
 	set nobackup
+	set nobomb
 	set noswapfile
+
 	set history=1024
 	set autochdir
 	set whichwrap=b,s,<,>,[,]
-	set nobomb
 	set clipboard=unnamed
 	set mouse=a
-
-	set formatoptions-=cro
+	autocmd FileType * setlocal formatoptions-=cro
+	set autoread
+	autocmd CursorHold * checktime
 
 	silent !stty -ixon
 
 	set ttimeoutlen=0
-
-" }}}
+	augroup FastEscape
+		autocmd!
+		au InsertEnter * set timeoutlen=0
+		au InsertLeave * set timeoutlen=1000
+	augroup END
 
 " Lang & Encoding
 
@@ -43,14 +48,7 @@
 	highlight cursorline ctermfg=NONE ctermbg=237 cterm=bold guifg=NONE guibg=NONE gui=bold
 	hi Folded term=NONE cterm=NONE
 
-	set number relativenumber
-	augroup numbertoggle
-		autocmd!
-		autocmd FocusGained,InsertLeave * set relativenumber
-		autocmd FocusLost,InsertEnter * set norelativenumber
-	augroup END
-
-	set list lcs=tab:\|\-
+	set number norelativenumber
 
 " Format
 
@@ -60,115 +58,115 @@
 	set noexpandtab
 	set shiftwidth=4
 	set softtabstop=4
+	set list lcs=tab:\|\-
+	" set tabstop=8
+	" set softtabstop=0
+	" set expandtab
+	" set shiftwidth=4
+	" set smarttab
 
 " Keymap
-	
+
 	" disable default mapping for arrow keys
-	nnoremap l <NOP>
-	vnoremap l <NOP>
-	nnoremap . <NOP>
-	vnoremap . <NOP>
-	nnoremap , <NOP>
-	vnoremap , <NOP>
-	nnoremap / <NOP>
-	vnoremap / <NOP>
+	nnoremap l <UP>
+	vnoremap l <UP>
+	nnoremap . <DOWN>
+	vnoremap . <DOWN>
+	nnoremap , <LEFT>
+	vnoremap , <LEFT>
+	nnoremap / <RIGHT>
+	vnoremap / <RIGHT>
 
 	" use shift+arrow
 	noremap <C-LEFT> <S-LEFT>
-	noremap <C-LEFT> <S-LEFT>
-	noremap <C-RIGHT> <S-RIGHT>
 	noremap <C-RIGHT> <S-RIGHT>
 
 	" page down/up
 	nnoremap <C-UP> 10k
 	inoremap <C-UP> <C-\><C-O>10k
+	vnoremap <C-UP> 10k
 	nnoremap <C-DOWN> 10j
 	inoremap <C-DOWN> <C-\><C-O>10j
+	vnoremap <C-DOWN> 10j
 
 	" saving
 	nnoremap <C-S> :w<CR>
-	inoremap <C-S> <Esc>:w<CR>
-
-	" change pane
-	inoremap <C-W> <Esc><C-W>
 
 	" replace
 	nnoremap <C-R> :Far 
-	inoremap <C-R> <Esc>:Far 
 	vnoremap <C-R> :Far 
 
 	" find
 	nnoremap <C-F> :F 
-	inoremap <C-F> <Esc>:F 
 	vnoremap <C-F> :F 
 
 	" undo/redo
 	nnoremap <C-Z> u
-	inoremap <C-Z> <Esc>u
 	nnoremap <C-Y> <C-R>
-	inoremap <C-Y> <Esc><C-R>
 
 	" copy/cut/paste/delete
 	nnoremap <C-C> yy
-	inoremap <C-C> <Esc>yya
 	vnoremap <C-C> y
 
 	nnoremap <C-X> dd
-	inoremap <C-X> <Esc>dda
 	vnoremap <C-X> d
 
 	nnoremap <C-V> p
-	inoremap <C-V> <Esc>pa
 	vnoremap <expr><C-V> 'pgv"'.v:register.'y`>'
 
 	nnoremap <C-D> "_dd
-	inoremap <C-D> <Esc>"_dda
 	vnoremap <C-D> "_d
-
-	" tab manipulation
-	nnoremap <C-Q> :q<CR>
-	inoremap <C-Q> <Esc>:q<CR>
-
-	nnoremap <C-N> :tabn<CR>
-	inoremap <C-N> <Esc>:tabn<CR>
-
-	nnoremap <C-P> :tabp<CR>
-	inoremap <C-P> <Esc>:tabp<CR>
-
-	" auto comment
-	nnoremap <C-_> :Commentary<CR>
-	inoremap <C-_> <Esc>:Commentary<CR>
-	vnoremap <C-_> :Commentary<CR>
 
 	" use bash command
 	nnoremap <C-T> :!
-	inoremap <C-T> <Esc>:!
+
+	" unmap <C-B> for tab
+	nnoremap <C-B> <Nop>
+
+	" tab manipulation
+	nnoremap <silent><C-B>l :tabs<CR>
+	nnoremap <silent><C-B>q :q<CR>
+
+	nnoremap <C-B>n gt
+	nnoremap <C-B>p gT
+
+	nnoremap <C-B>c :tabe 
+	nnoremap <C-B>h :vsplit 
+	nnoremap <C-B>v :split 
+
+	" switch tab by numbers
+	nnoremap <C-B>1 1gt
+	nnoremap <C-B>2 2gt
+	nnoremap <C-B>3 3gt
+	nnoremap <C-B>4 4gt
+	nnoremap <C-B>5 5gt
+	nnoremap <C-B>6 6gt
+	nnoremap <C-B>7 7gt
+	nnoremap <C-B>8 8gt
+	nnoremap <C-B>9 9gt
+
+	" auto comment
+	nnoremap <silent><C-_> :Commentary<CR>
+	vnoremap <silent><C-_> :Commentary<CR>
 
 	" toggle plugs
-	nnoremap <F1> :NERDTreeToggle<CR>
-	inoremap <F1> <Esc>:NERDTreeToggle<CR>a
-
-	nnoremap <F2> :TagbarToggle<CR>
-	inoremap <F2> <Esc>:TagbarToggle<CR>a
+	nnoremap <silent><F1> :NERDTreeToggle<CR>
+	nnoremap <silent><F2> :TagbarToggle<CR>
 
 	" easy align
-	nnoremap <C-E> :EasyAlign 
-	inoremap <C-E> <Esc>:EasyAlign 
-	vnoremap <C-E> :EasyAlign 
+	nnoremap <silent><C-E> :EasyAlign 
+	vnoremap <silent><C-E> :EasyAlign 
 
 " Enalbe plugins
 
 	call plug#begin('~/.vim/autoload/')
-		" Plug 'fatih/vim-go', {'for': 'go'}
-		" Plug 'nsf/gocode', {'for': 'go'}
-
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 		Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 		Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 		Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 
 		Plug 'kien/ctrlp.vim'
-		Plug 'jiangmiao/auto-pairs'
+		" Plug 'jiangmiao/auto-pairs'
 		Plug 'tpope/vim-commentary'
 		Plug 'brooth/far.vim'
 		Plug 'tmhedberg/matchit'
@@ -180,7 +178,6 @@
 		Plug 'vim-airline/vim-airline'
 		Plug 'vim-airline/vim-airline-themes'
 		Plug 'morhetz/gruvbox'
-
 	call plug#end()
 
 " COC.nvim
@@ -200,6 +197,12 @@
 	let g:coc_snippet_next='<C-N>'
 	let g:coc_snippet_previous='<C-P>'
 
+	" coc-go
+	" autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
+	" coc-prettier
+	command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " CtrlP
 
 	let g:ctrlp_map='<leader>p'
@@ -214,7 +217,7 @@
 
 	set lazyredraw
 	set regexpengine=1
-	set ignorecase smartcase
+	" set ignorecase smartcase
 
 	let g:far#enable_undo=1
 	let g:far#highlight_match=1
@@ -225,9 +228,7 @@
 	let g:far#preview_window_height=8
 
 	let g:far#auto_preview=1
-	let g:far#auto_preview_on_start=1
-
-	let g:far#collapse_result=0
+	let g:far#auto_preview_on_start=0
 
 " Gitgutterr
 
@@ -237,6 +238,8 @@
 " Airline
 
 	let g:airline_theme='base16_gruvbox_dark_hard'
+	let g:airline_powerline_fonts=1
+	let g:airline#extensions#tabline#enabled=1
 	let g:airline_powerline_fonts=1
 
 " Gruvbox
@@ -297,6 +300,5 @@
 	let g:anyfold_fold_comments=0
 
 " EasyAlign
-
 
 
