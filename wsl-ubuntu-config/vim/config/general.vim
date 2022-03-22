@@ -5,21 +5,11 @@ autocmd filetype cpp source ~/.vim/filetype/cpp.vim
 autocmd filetype python source ~/.vim/filetype/python.vim
 autocmd filetype go source ~/.vim/filetype/go.vim
 
-""" SYNTAX
-
-syntax on
-filetype plugin indent on
-
-set foldlevel=99
-set formatoptions-=cro
-
-""" BEHAVIOR
-
-set mouse=a
-" set whichwrap=b,s,<,>,[,]
-set whichwrap+=<,>,[,]
-
 """ SYSTEM
+
+" let &shellpipe="2>&1|tee"
+let &shellpipe="&>"
+" let &shellpipe="2>/dev/null>"
 
 silent !stty -ixon
 
@@ -45,6 +35,26 @@ augroup FastEscape
     au InsertLeave * set timeoutlen=1000
 augroup END
 
+""" SYNTAX
+
+syntax on
+filetype plugin indent on
+
+set foldlevel=99
+" set formatoptions-=cro
+augroup NoAutoComment
+  au!
+  au FileType * setlocal formatoptions-=cro
+augroup end
+
+""" BEHAVIOR
+
+set mouse=a
+set whichwrap=b,s,<,>,[,]
+
+set splitright
+set splitbelow
+
 """ LANGUAGE
 
 let &t_TI=""
@@ -59,6 +69,8 @@ highlight cursorline ctermfg=NONE ctermbg=237 cterm=bold guifg=NONE guibg=NONE g
 highlight Folded term=NONE cterm=NONE
 
 set number norelativenumber
+
+set signcolumn=yes
 
 """ INDENT
 
@@ -79,3 +91,4 @@ else
     set softtabstop=4
     set list lcs=tab:\|\-
 endif
+

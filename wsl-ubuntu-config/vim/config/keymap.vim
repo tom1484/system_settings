@@ -58,10 +58,10 @@ nnoremap <C-A>q :q<CR>
 nnoremap <C-A>n gt
 nnoremap <C-A>p gT
 
-nnoremap <C-A><UP> <C-W><UP>
-nnoremap <C-A><DOWN> <C-W><DOWN>
-nnoremap <C-A><LEFT> <C-W><LEFT>
-nnoremap <C-A><RIGHT> <C-W><RIGHT>
+" nnoremap <C-A><UP> <C-W><UP>
+" nnoremap <C-A><DOWN> <C-W><DOWN>
+" nnoremap <C-A><LEFT> <C-W><LEFT>
+" nnoremap <C-A><RIGHT> <C-W><RIGHT>
 
 nnoremap <C-A>c :tabe 
 nnoremap <C-A>h :vsplit 
