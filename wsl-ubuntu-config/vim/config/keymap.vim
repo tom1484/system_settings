@@ -52,8 +52,8 @@ nnoremap <C-A> <Nop>
 nnoremap <C-W> <Nop>
 
 " tab manipulation
-nnoremap <C-A>l :tabs<CR>
-nnoremap <C-A>q :q<CR>
+nnoremap <C-A>s :tabs<CR>
+nnoremap <C-A>x :q<CR>
 
 nnoremap <C-A>n gt
 nnoremap <C-A>p gT
