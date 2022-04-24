@@ -1,6 +1,6 @@
 # push/pull Documents
-alias pd='zsh ~/.push_documents'
-alias pp='zsh ~/.pull_documents'
+alias pd='zsh ~/.zsh/script/push_documents.sh'
+alias pp='zsh ~/.zsh/script/pull_documents.sh'
 
 # easy push
 alias UpdateRepo="~/.zsh/script/update_repo.sh"
