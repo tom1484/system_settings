@@ -11,3 +11,4 @@ alias CreateGoProject="zsh ~/.zsh/script/create_go_project.sh"
 alias jupyter-notebook="~/.local/bin/jupyter-notebook --no-browser"
 alias jupyter-lab="~/.local/bin/jupyter-lab --no-browser"
 
+alias vim="nvim"
