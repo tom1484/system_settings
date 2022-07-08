@@ -25,8 +25,8 @@ set ttyfast
 set autoread
 autocmd CursorHold * checktime
 
-set history=1024
-set clipboard=unnamed
+" set history=1024
+" set clipboard=unnamed
 
 set ttimeoutlen=0
 augroup FastEscape
@@ -43,8 +43,8 @@ filetype plugin indent on
 set foldlevel=99
 " set formatoptions-=cro
 augroup NoAutoComment
-  au!
-  au FileType * setlocal formatoptions-=cro
+au!
+au FileType * setlocal formatoptions-=cro
 augroup end
 
 """ BEHAVIOR
@@ -62,8 +62,6 @@ let &t_TE=""
 
 """ GUI
 
-" set background=dark
-" colorscheme palenight
 colorscheme codedark
 
 set cursorline
@@ -98,3 +96,5 @@ else
     set list lcs=tab:\|\-
 endif
 
+function Temp()
+endfunction
