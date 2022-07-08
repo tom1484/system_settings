@@ -7,7 +7,7 @@ call plug#begin('~/.vim/autoload/')
     " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'ryanoasis/vim-devicons'
     Plug 'preservim/tagbar'
-    Plug 'airblade/vim-gitgutter'
+    " Plug 'airblade/vim-gitgutter'
 
     """ LANGAUGE
     Plug 'stevearc/vim-arduino'
@@ -34,7 +34,7 @@ call plug#begin('~/.vim/autoload/')
 call plug#end()
 
 " let exclude=["vim-prettier", "vim-gitgutter", "nerdtree-git-plugin"]
-let exclude=["nerdtree", "vim-airline", "vim-multiple-cursors"]
+let exclude=["vim-gitgutter", "nerdtree", "vim-airline", "vim-multiple-cursors"]
 for CONFIG in split(glob('/home/tom1484/.config/nvim/config/plugin/*.vim'), '\n')
     let plug_name=split(CONFIG, "/")[-1][:-5]
     if index(exclude, plug_name) < 0
