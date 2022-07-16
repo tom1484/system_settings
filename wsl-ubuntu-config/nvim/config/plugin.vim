@@ -30,7 +30,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
-" let exclude=['vim-prettier', 'vim-gitgutter', 'nerdtree-git-plugin']
 let exclude=['vim-multiple-cursors']
 for CONFIG in split(glob('/home/tom1484/.config/nvim/config/plugin/*.vim'), '\n')
     let plug_name=split(CONFIG, '/')[-1][:-5]
