@@ -1,13 +1,11 @@
-call plug#begin('~/.vim/autoload/')
+call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     """ SIDE BARS
-    " Plug 'scrooloose/nerdtree'
-    " Plug 'Xuyuanp/nerdtree-git-plugin'
-    " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'ryanoasis/vim-devicons'
     Plug 'preservim/tagbar'
     Plug 'airblade/vim-gitgutter'
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
     """ LANGAUGE
     Plug 'stevearc/vim-arduino'
@@ -20,6 +18,7 @@ call plug#begin('~/.vim/autoload/')
     Plug 'junegunn/fzf'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'chipsenkbeil/distant.nvim'
+    Plug 'terryma/vim-expand-region'
 
     """ FORMAT
     Plug 'prettier/vim-prettier', {'do': 'npm install'}
@@ -29,15 +28,13 @@ call plug#begin('~/.vim/autoload/')
     """ GUI
     Plug 'itchyny/lightline.vim'
     Plug 'tomasiser/vim-code-dark'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-" let exclude=["vim-prettier", "vim-gitgutter", "nerdtree-git-plugin"]
-let exclude=["nerdtree", "vim-airline", "vim-multiple-cursors"]
+" let exclude=['vim-prettier', 'vim-gitgutter', 'nerdtree-git-plugin']
+let exclude=['vim-multiple-cursors']
 for CONFIG in split(glob('/home/tom1484/.config/nvim/config/plugin/*.vim'), '\n')
-    let plug_name=split(CONFIG, "/")[-1][:-5]
+    let plug_name=split(CONFIG, '/')[-1][:-5]
     if index(exclude, plug_name) < 0
-        exec "source" CONFIG
+        exec 'source' CONFIG
     endif
 endfor

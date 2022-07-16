@@ -1,9 +1,9 @@
 """ FILETYPES
 
-autocmd filetype c source ~/.vim/filetype/c.vim
-autocmd filetype cpp source ~/.vim/filetype/cpp.vim
-autocmd filetype python source ~/.vim/filetype/python.vim
-autocmd filetype go source ~/.vim/filetype/go.vim
+" autocmd filetype c source ~/.config/nvim/filetype/c.vim
+" autocmd filetype cpp source ~/.config/nvim/filetype/cpp.vim
+" autocmd filetype python source ~/.config/nvim/filetype/python.vim
+" autocmd filetype go source ~/.config/nvim/filetype/go.vim
 
 """ SYSTEM
 
