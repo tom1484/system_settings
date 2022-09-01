@@ -8,7 +8,7 @@ alias UpdateRepo="~/.zsh/script/update_repo.sh"
 alias SetGoPath="source ~/.zsh/script/set_go_path.sh"
 alias CreateGoProject="zsh ~/.zsh/script/create_go_project.sh"
 
+alias CreateTSProject="zsh ~/.zsh/script/create_ts_project.sh"
+
 alias jupyter-notebook="~/.local/bin/jupyter-notebook --no-browser"
 alias jupyter-lab="~/.local/bin/jupyter-lab --no-browser"
-
-alias vim="nvim"

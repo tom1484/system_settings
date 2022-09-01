@@ -109,3 +109,7 @@ setopt no_nomatch
 
 ZLE_RPROMPT_INDENT=0
 
+export LD_LIBRARY_PATH=/usr/local/lib
+
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
