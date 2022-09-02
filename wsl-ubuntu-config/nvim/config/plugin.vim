@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
     """ SIDE BARS
     Plug 'ryanoasis/vim-devicons'
@@ -9,7 +10,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     """ LANGAUGE
     Plug 'stevearc/vim-arduino'
-    Plug 'JuliaEditorSupport/julia-vim'
+    " Plug 'JuliaEditorSupport/julia-vim'
+    " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
     """ UTILITY
     Plug 'tmsvg/pear-tree'

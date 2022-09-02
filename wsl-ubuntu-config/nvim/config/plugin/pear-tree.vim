@@ -27,8 +27,8 @@ let g:pear_tree_map_special_keys = 0
 
 " Check if coc list exists
 function Enter()
-if pumvisible()
-    return "\<C-y>"
+if coc#pum#visible()
+    return coc#pum#confirm()
 else
     return "\<Plug>(PearTreeExpand)"
 endif

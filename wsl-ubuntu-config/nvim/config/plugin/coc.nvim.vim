@@ -3,11 +3,14 @@ let g:coc_global_extensions=[
 \     "coc-snippets",
 \ ]
 
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent><expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+autocmd! CompleteDone * if coc#pum#visible()== 0 | pclose | endif
+inoremap <silent><expr><TAB> coc#pum#visible() ? coc#pum#next(1) : "\<TAB>"
+inoremap <silent><expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<S-TAB>"
 
 inoremap <silent><expr><NUL> coc#refresh()
+inoremap <silent><expr><CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr><CR> coc#pum#visible() ? "\<C-Y>" : "\<CR>"
 
 nmap gr <Plug>(coc-rename)
 nmap gd <Plug>(coc-definition)
