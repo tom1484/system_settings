@@ -24,3 +24,9 @@ sed -i '/"scripts"/a \ \ \ \ "start": "npm run build && node build/index.js", ' 
 
 mkdir src
 touch src/index.ts
+
+echo \
+'node_modules
+.npm
+.env
+build' > .gitignore
