@@ -113,3 +113,5 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+export PATH="/home/tom1484/.oh-my-zsh/plugins/git-fuzzy/bin:$PATH"
