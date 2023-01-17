@@ -24,7 +24,10 @@ return {
 		lazy = false,
 	},
 	-- vim-fugitive
-	"tpope/vim-fugitive",
+	{
+		"tpope/vim-fugitive",
+		lazy = false,
+	},
 	-- Comment
 	"numToStr/Comment.nvim",
 	-- lualine

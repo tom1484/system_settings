@@ -55,7 +55,7 @@ require("jabs").setup({
 	-- Keymaps
 	keymap = {
 		-- close = "d", -- Close buffer. Default D
-		jump = "<leader>", -- Jump to buffer. Default <cr>
+		jump = "<cr>", -- Jump to buffer. Default <cr>
 		h_split = "h", -- Horizontally split buffer. Default s
 		v_split = "v", -- Vertically split buffer. Default v
 		preview = "p", -- Open buffer preview. Default P
@@ -66,9 +66,9 @@ require("jabs").setup({
 })
 
 vim.keymap.set("n", "<leader>b", function()
-	-- if vim.o.filetype == "JABSwindow" then
-	-- 	vim.cmd.q()
-	-- 	return
-	-- end
+	if vim.o.filetype == "JABSwindow" then
+		vim.cmd.q()
+		return
+	end
 	vim.cmd.JABS()
 end)
