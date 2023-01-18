@@ -11,6 +11,8 @@ require("telescope").setup({
 				["<C-v>"] = "select_horizontal",
 				["<C-t>"] = "select_tab",
 				["<Esc>"] = "close",
+				["<S-Tab>"] = "move_selection_next",
+				["<Tab>"] = "move_selection_previous",
 			},
 		},
 	},

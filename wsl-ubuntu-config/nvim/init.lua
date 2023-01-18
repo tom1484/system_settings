@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+require("keymaps")
+require("config")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -22,8 +25,6 @@ require("lazy").setup("plugins", require("configurations"))
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",
 	callback = function()
-		require("keymaps")
-		require("config")
 		-- require("commands")
 	end,
 })

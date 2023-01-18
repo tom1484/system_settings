@@ -3,7 +3,7 @@ local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
--- local augroup = vim.api.nvim_create_augroup("lspformatting", {})
+local augroup = vim.api.nvim_create_augroup("lspformatting", {})
 
 null_ls.setup({
 	sources = {
@@ -16,9 +16,10 @@ null_ls.setup({
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
-			-- vim.keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()")
+			vim.keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()")
 			vim.keymap.set("n", "<leader>f", function()
-				vim.lsp.buf.format({ bufnr = bufnr })
+				vim.lsp.buf.format()
+				vim.cmd.w()
 			end)
 			-- vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 			-- vim.api.nvim_create_autocmd("BufWritePre", {
