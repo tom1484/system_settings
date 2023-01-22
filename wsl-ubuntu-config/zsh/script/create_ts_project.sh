@@ -3,8 +3,8 @@ PROJECT_NAME=$1
 mkdir $PROJECT_NAME
 cd $PROJECT_NAME
 
-npm init -y
-npm install typescript ts-node nodemon rimraf @types/node --save-dev
+yarn init -y
+yarn add typescript ts-node nodemon rimraf @types/node --save-dev
 
 npx tsc --init --rootDir src --outDir build \
 --esModuleInterop --resolveJsonModule --lib es6 \
@@ -20,7 +20,7 @@ echo \
 
 sed -i '/"scripts"/a \ \ \ \ "start:dev": "nodemon", ' package.json
 sed -i '/"scripts"/a \ \ \ \ "build": "rimraf ./build && tsc", ' package.json
-sed -i '/"scripts"/a \ \ \ \ "start": "npm run build && node build/index.js", ' package.json
+sed -i '/"scripts"/a \ \ \ \ "start": "yarn run build && node build/index.js", ' package.json
 
 mkdir src
 touch src/index.ts

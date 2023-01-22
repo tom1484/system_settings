@@ -12,3 +12,10 @@ alias CreateTSProject="zsh ~/.zsh/script/create_ts_project.sh"
 
 alias jupyter-notebook="~/.local/bin/jupyter-notebook --no-browser"
 alias jupyter-lab="~/.local/bin/jupyter-lab --no-browser"
+
+# git alias
+alias ga="git add"
+alias gm="git commit -m"
+alias gp="git push"
+alias gf="git fetch"
+alias gr="git rebase"
