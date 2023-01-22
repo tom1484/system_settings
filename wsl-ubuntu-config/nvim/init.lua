@@ -3,8 +3,21 @@ vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require("keymaps")
-require("config")
+local keymaps_setup = require("keymaps")
+local config_setup = require("config")
+local ftconfig_setup = require("ftconfig")
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		keymaps_setup()
+		config_setup()
+	end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		ftconfig_setup()
+	end,
+})
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

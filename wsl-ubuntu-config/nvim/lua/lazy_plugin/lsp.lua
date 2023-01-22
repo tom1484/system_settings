@@ -10,6 +10,10 @@ return {
             "sumneko_lua",
             "rust_analyzer",
             "clangd",
+            "pylsp",
+            "eslint",
+            "gopls",
+            "julials",
         })
 
         -- Fix Undefined global 'vim'
@@ -40,21 +44,31 @@ return {
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
-                elseif luasnip.expand_or_locally_jumpable() then
-                    luasnip.expand_or_jump()
                 elseif has_words_before() then
                     cmp.complete()
                 else
                     fallback()
                 end
-            end, { "i", "s" }),
+            end, { "i" }),
             ["<S-Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) then
-                    luasnip.jump(-1)
                 else
                     fallback()
+                end
+            end, { "i" }),
+            ["<C-n>"] = cmp.mapping(function(fallback)
+                if luasnip.expand_or_locally_jumpable() then
+                    luasnip.expand_or_jump()
+                else
+                    -- fallback()
+                end
+            end, { "i", "s" }),
+            ["<C-p>"] = cmp.mapping(function(fallback)
+                if luasnip.jumpable(-1) then
+                    luasnip.jump(-1)
+                else
+                    -- fallback()
                 end
             end, { "i", "s" }),
             ["<CR>"] = cmp.mapping(function(fallback)
@@ -92,9 +106,12 @@ return {
             vim.keymap.set("n", "gd", function()
                 vim.lsp.buf.definition()
             end, opts)
-            vim.keymap.set("n", "H", function()
+            vim.keymap.set("n", "gh", function()
                 vim.lsp.buf.hover()
             end, opts)
+            -- vim.keymap.set("n", "L", function()
+            --     vim.diagnostic.open_float(0, { scope = "line", border = "rounded" })
+            -- end, opts)
             -- vim.keymap.set("n", "<leader>vws", function()
             --     vim.lsp.buf.workspace_symbol()
             -- end, opts)
@@ -135,5 +152,8 @@ return {
 
             notify(msg, ...)
         end
+
+        -- Load null-ls
+        require("lazy_plugin.null-ls")
     end,
 }
