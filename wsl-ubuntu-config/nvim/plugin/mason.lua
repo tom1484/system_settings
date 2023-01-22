@@ -10,3 +10,11 @@ require("mason").setup({
 		-- },
 	},
 })
+
+-- Linter
+--     commitlint
+--     eslint_d
+--     jsonlint
+--     revive
+--     ruff
+--     staticcheck

@@ -8,27 +8,25 @@ local augroup = vim.api.nvim_create_augroup("lspformatting", {})
 null_ls.setup({
 	border = "rounded",
 	sources = {
+        formatting.autopep8,
+        formatting.astyle.with({
+            filetypes = { "cpp", "c" },
+        }),
+        formatting.beautysh,
+        formatting.cbfmt,
+        formatting.eslint_d,
+        formatting.gofumpt,
+        formatting.goimports,
+        formatting.prettierd.with({
+            filetypes = { "html", "css", "json" },
+        }),
+        formatting.rustfmt,
+        formatting.shfmt,
 		formatting.stylua,
-		formatting.astyle.with({
-			filetypes = { "cpp", "c" },
-		}),
-		-- formatting.clang_format.with({
-		--     filetypes = { "cpp" },
-		-- }),
-		formatting.goimports,
-		formatting.gofumpt,
-		formatting.prettierd.with({
-			filetypes = { "html", "css", "json" },
-		}),
-		formatting.rustfmt,
-		formatting.autopep8,
-		formatting.beautysh,
-		formatting.cbfmt,
-		formatting.eslint_d,
 
-		diagnostics.eslint_d.with({
-			extra_args = { "--tab-width", 2 },
-		}),
+		-- diagnostics.eslint_d.with({
+		-- 	extra_args = { "--tab-width", 2 },
+		-- }),
 		-- diagnostics.cpplint,
 		diagnostics.commitlint,
 		diagnostics.jsonlint,

@@ -6,14 +6,17 @@ return {
         lsp.preset("recommended")
 
         lsp.ensure_installed({
-            "tsserver",
-            "sumneko_lua",
-            "rust_analyzer",
             "clangd",
-            "pylsp",
             "eslint",
             "gopls",
+            "html",
+            "jsonls",
             "julials",
+            "sumneko_lua",
+            "pylsp",
+            "rust_analyzer",
+            "taplo",
+            "tsserver",
         })
 
         -- Fix Undefined global 'vim'
