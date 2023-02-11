@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source ~/.zsh/config/p10k.zsh
+source ~/.config/zsh/config/p10k.zsh
 ZLE_RPROMPT_INDENT=0
 
 setopt no_nomatch
